@@ -1,0 +1,35 @@
+{
+  "name": "iam-invoice-demo",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngoctan270905/invoice-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngoctan270905/invoice-demo/issues"
+  },
+  "homepage": "https://github.com/ngoctan270905/invoice-demo#readme",
+  "devDependencies": {
+    "@types/node": "^26.1.0",
+    "prisma": "6.19.3",
+    "tsx": "^4.23.0",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "@prisma/client": "6.19.3"
+  }
+}
