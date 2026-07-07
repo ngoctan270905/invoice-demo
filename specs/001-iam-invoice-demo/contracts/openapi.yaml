@@ -1,0 +1,316 @@
+openapi: 3.0.3
+info:
+  title: IAM INVOICE Demo API
+  version: 1.0.0
+  description: API contract cho demo quản lý hóa đơn điện tử IAM INVOICE.
+servers:
+  - url: http://localhost:3000
+paths:
+  /health:
+    get:
+      summary: Kiểm tra server đang chạy
+      responses:
+        '200':
+          description: Server hoạt động
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+  /customers:
+    post:
+      summary: Thêm khách hàng mới
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerRequest'
+      responses:
+        '201':
+          description: Tạo khách hàng thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Mã số thuế đã tồn tại
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      summary: Xem danh sách khách hàng
+      responses:
+        '200':
+          description: Danh sách khách hàng
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerListResponse'
+  /invoices:
+    post:
+      summary: Tạo hóa đơn mới
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInvoiceRequest'
+      responses:
+        '201':
+          description: Tạo hóa đơn thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      summary: Xem và tìm kiếm danh sách hóa đơn
+      parameters:
+        - name: search
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Tìm theo mã hóa đơn hoặc tên khách hàng
+      responses:
+        '200':
+          description: Danh sách hóa đơn
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceListResponse'
+  /invoices/{id}:
+    get:
+      summary: Xem chi tiết hóa đơn
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Chi tiết hóa đơn
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+        '404':
+          description: Không tìm thấy hóa đơn
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /invoices/{id}/status:
+    patch:
+      summary: Cập nhật trạng thái hóa đơn
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateInvoiceStatusRequest'
+      responses:
+        '200':
+          description: Cập nhật trạng thái thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+        '400':
+          description: Trạng thái không hợp lệ hoặc chuyển trạng thái sai luồng
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Không tìm thấy hóa đơn
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: OK
+        data:
+          nullable: true
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: Dữ liệu không hợp lệ
+        errors:
+          nullable: true
+    CreateCustomerRequest:
+      type: object
+      required: [companyName, taxCode, address, email]
+      properties:
+        companyName:
+          type: string
+        taxCode:
+          type: string
+        address:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+        companyName:
+          type: string
+        taxCode:
+          type: string
+        address:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+          nullable: true
+    CustomerResponse:
+      allOf:
+        - $ref: '#/components/schemas/SuccessResponse'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/Customer'
+    CustomerListResponse:
+      allOf:
+        - $ref: '#/components/schemas/SuccessResponse'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Customer'
+    CreateInvoiceRequest:
+      type: object
+      required: [customerId, items]
+      properties:
+        customerId:
+          type: integer
+        items:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/CreateInvoiceItemRequest'
+    CreateInvoiceItemRequest:
+      type: object
+      required: [itemName, quantity, unitPrice, vatRate]
+      properties:
+        itemName:
+          type: string
+        quantity:
+          type: number
+          minimum: 0
+          exclusiveMinimum: true
+        unitPrice:
+          type: number
+          minimum: 0
+        vatRate:
+          type: integer
+          enum: [0, 5, 10]
+    UpdateInvoiceStatusRequest:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+          enum: [Draft, Signed, Issued, Cancelled]
+    Invoice:
+      type: object
+      properties:
+        id:
+          type: integer
+        invoiceCode:
+          type: string
+          example: HD202607070001
+        customer:
+          $ref: '#/components/schemas/Customer'
+        status:
+          type: string
+          enum: [Draft, Signed, Issued, Cancelled]
+        subtotal:
+          type: string
+          example: '1000000'
+        taxTotal:
+          type: string
+          example: '100000'
+        grandTotal:
+          type: string
+          example: '1100000'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceItem'
+    InvoiceItem:
+      type: object
+      properties:
+        id:
+          type: integer
+        itemName:
+          type: string
+        quantity:
+          type: string
+        unitPrice:
+          type: string
+        vatRate:
+          type: integer
+          enum: [0, 5, 10]
+        lineSubtotal:
+          type: string
+        lineTax:
+          type: string
+        lineTotal:
+          type: string
+    InvoiceResponse:
+      allOf:
+        - $ref: '#/components/schemas/SuccessResponse'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/Invoice'
+    InvoiceListResponse:
+      allOf:
+        - $ref: '#/components/schemas/SuccessResponse'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Invoice'
