@@ -1,4 +1,4 @@
-# Checklist chất lượng yêu cầu API: IAM INVOICE Demo
+# Checklist chất lượng yêu cầu API: INVOICE Demo
 
 **Mục đích**: Validate độ rõ ràng, đầy đủ và nhất quán của yêu cầu API/backend trước khi tạo task triển khai
 **Ngày tạo**: 2026-07-07

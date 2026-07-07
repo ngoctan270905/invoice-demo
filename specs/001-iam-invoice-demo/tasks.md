@@ -1,4 +1,4 @@
-# Công việc: IAM INVOICE Demo - Quản Lý Hóa Đơn Điện Tử
+# Công việc: INVOICE Demo - Quản Lý Hóa Đơn Điện Tử
 
 **Đầu vào**: Tài liệu thiết kế từ `/specs/001-iam-invoice-demo/`
 
@@ -63,14 +63,14 @@
 
 ### Triển khai cho Câu chuyện người dùng 1
 
-- [ ] T016 [P] [US1] Tạo customer zod schemas cho create customer trong src/schemas/customer.schema.ts
-- [ ] T017 [P] [US1] Implement CustomerRepository create/findByTaxCode/findMany trong src/repositories/customer.repository.ts
-- [ ] T018 [US1] Implement CustomerService createCustomer với validate trùng mã số thuế trong src/services/customer.service.ts
-- [ ] T019 [US1] Implement CustomerService getCustomers trong src/services/customer.service.ts
-- [ ] T020 [US1] Implement CustomerController createCustomer/listCustomers trong src/controllers/customer.controller.ts
-- [ ] T021 [US1] Map POST /customers và GET /customers trong src/routes/customer.route.ts
-- [ ] T022 [US1] Mount customer routes vào router tổng trong src/routes/index.ts
-- [ ] T023 [US1] Kiểm chứng US1 theo quickstart mục 7.2, 7.3, 7.4 trong specs/001-iam-invoice-demo/quickstart.md
+- [X] T016 [P] [US1] Tạo customer zod schemas cho create customer trong src/schemas/customer.schema.ts
+- [X] T017 [P] [US1] Implement CustomerRepository create/findByTaxCode/findMany trong src/repositories/customer.repository.ts
+- [X] T018 [US1] Implement CustomerService createCustomer với validate trùng mã số thuế trong src/services/customer.service.ts
+- [X] T019 [US1] Implement CustomerService getCustomers trong src/services/customer.service.ts
+- [X] T020 [US1] Implement CustomerController createCustomer/listCustomers trong src/controllers/customer.controller.ts
+- [X] T021 [US1] Map POST /customers và GET /customers trong src/routes/customer.route.ts
+- [X] T022 [US1] Mount customer routes vào router tổng trong src/routes/index.ts
+- [X] T023 [US1] Kiểm chứng US1 theo quickstart mục 7.2, 7.3, 7.4 trong specs/001-iam-invoice-demo/quickstart.md
 
 **Checkpoint**: Có thể tạo khách hàng, chặn trùng mã số thuế và xem danh sách khách hàng độc lập.
 
@@ -144,10 +144,10 @@
 
 **Mục đích**: Hoàn thiện tài liệu, contract, build và kiểm chứng toàn bộ luồng.
 
-- [ ] T049 [P] Cập nhật README với endpoint chính và flow test IAM Invoice trong README.md
+- [ ] T049 [P] Cập nhật README với endpoint chính và flow test Invoice trong README.md
 - [ ] T050 [P] Đồng bộ OpenAPI contract nếu endpoint/response thay đổi trong specs/001-iam-invoice-demo/contracts/openapi.yaml
 - [ ] T051 Chạy npm run build và sửa lỗi TypeScript nếu có trong src/
-- [ ] T052 Chạy Prisma migration cho schema IAM Invoice bằng npm run prisma:migrate trong prisma/migrations/
+- [ ] T052 Chạy Prisma migration cho schema Invoice bằng npm run prisma:migrate trong prisma/migrations/
 - [ ] T053 Validate quickstart end-to-end theo specs/001-iam-invoice-demo/quickstart.md
 - [ ] T054 Review lại checklist API và đánh dấu các mục đã được spec/plan bao phủ trong specs/001-iam-invoice-demo/checklists/api.md
 

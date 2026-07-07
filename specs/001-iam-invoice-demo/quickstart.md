@@ -1,4 +1,4 @@
-# Quickstart: IAM INVOICE Demo
+# Quickstart: INVOICE Demo
 
 Tài liệu này mô tả cách chạy và kiểm chứng luồng chính của feature bằng terminal và Postman/Thunder Client.
 

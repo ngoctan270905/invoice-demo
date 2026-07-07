@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: IAM INVOICE Demo API
+  title: INVOICE Demo API
   version: 1.0.0
-  description: API contract cho demo quản lý hóa đơn điện tử IAM INVOICE.
+  description: API contract cho demo quản lý hóa đơn điện tử INVOICE.
 servers:
   - url: http://localhost:3000
 paths:

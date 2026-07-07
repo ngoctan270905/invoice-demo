@@ -1,4 +1,4 @@
-# IAM Invoice Demo Backend
+# Invoice Demo Backend
 
 Backend Node.js thuần + TypeScript cho dự án Invoice Demo.
 

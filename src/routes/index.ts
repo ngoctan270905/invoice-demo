@@ -1,6 +1,9 @@
+import { readFile } from 'node:fs/promises';
 import type { IncomingMessage, ServerResponse } from 'node:http';
+import { resolve } from 'node:path';
 
 import { sendSuccess } from '../utils/api-response.js';
+import { registerCustomerRoutes } from './customer.route.js';
 
 export type RouteHandler = (
   request: IncomingMessage,
@@ -17,6 +20,7 @@ type Route = {
 };
 
 const routes: Route[] = [];
+let registered = false;
 
 export function addRoute(method: string, path: string, handler: RouteHandler) {
   const paramNames: string[] = [];
@@ -35,6 +39,15 @@ export function addRoute(method: string, path: string, handler: RouteHandler) {
   });
 }
 
+export function registerRoutes() {
+  if (registered) {
+    return;
+  }
+
+  registerCustomerRoutes();
+  registered = true;
+}
+
 export async function handleRoutes(
   request: IncomingMessage,
   response: ServerResponse,
@@ -46,6 +59,21 @@ export async function handleRoutes(
       status: 'ok',
       service: 'iam-invoice-demo',
     });
+    return;
+  }
+
+  if (request.method === 'GET' && pathname === '/api-docs.yaml') {
+    const openApiPath = resolve('specs/001-iam-invoice-demo/contracts/openapi.yaml');
+    const openApiDocument = await readFile(openApiPath, 'utf-8');
+
+    response.writeHead(200, { 'Content-Type': 'application/yaml; charset=utf-8' });
+    response.end(openApiDocument);
+    return;
+  }
+
+  if (request.method === 'GET' && pathname === '/api-docs') {
+    response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    response.end(getSwaggerHtml());
     return;
   }
 
@@ -64,4 +92,27 @@ export async function handleRoutes(
   }, {});
 
   await route.handler(request, response, params, body);
+}
+
+function getSwaggerHtml() {
+  return `<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <title>INVOICE Demo API Docs</title>
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5/swagger-ui.css" />
+  </head>
+  <body>
+    <div id="swagger-ui"></div>
+    <script src="https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
+    <script>
+      window.onload = () => {
+        window.ui = SwaggerUIBundle({
+          url: '/api-docs.yaml',
+          dom_id: '#swagger-ui',
+        });
+      };
+    </script>
+  </body>
+</html>`;
 }

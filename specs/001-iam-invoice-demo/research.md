@@ -1,4 +1,4 @@
-# Research: IAM INVOICE Demo - Quản Lý Hóa Đơn Điện Tử
+# Research: INVOICE Demo - Quản Lý Hóa Đơn Điện Tử
 
 ## Decision: Backend Node.js thuần + TypeScript, không dùng Express/NestJS
 

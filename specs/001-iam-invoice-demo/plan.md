@@ -1,4 +1,4 @@
-# Kế hoạch triển khai: IAM INVOICE Demo - Quản Lý Hóa Đơn Điện Tử
+# Kế hoạch triển khai: INVOICE Demo - Quản Lý Hóa Đơn Điện Tử
 
 **Branch**: `[001-iam-invoice-demo]` | **Ngày**: 2026-07-07 | **Spec**: [spec.md](spec.md)
 
@@ -6,7 +6,7 @@
 
 ## Tóm tắt
 
-Triển khai backend demo quản lý hóa đơn điện tử IAM INVOICE bằng Node.js + TypeScript. Hệ thống cung cấp API quản lý khách hàng, tạo hóa đơn, tính tiền hàng/VAT/tổng thanh toán, tra cứu hóa đơn và cập nhật trạng thái hóa đơn mô phỏng. Kiến trúc tuân theo phân lớp route → controller → service → repository, dùng MySQL + Prisma ORM cho dữ liệu, zod để validate input tại controller, và middleware lỗi tập trung để trả JSON thống nhất.
+Triển khai backend demo quản lý hóa đơn điện tử INVOICE bằng Node.js + TypeScript. Hệ thống cung cấp API quản lý khách hàng, tạo hóa đơn, tính tiền hàng/VAT/tổng thanh toán, tra cứu hóa đơn và cập nhật trạng thái hóa đơn mô phỏng. Kiến trúc tuân theo phân lớp route → controller → service → repository, dùng MySQL + Prisma ORM cho dữ liệu, zod để validate input tại controller, và middleware lỗi tập trung để trả JSON thống nhất.
 
 ## Ngữ cảnh kỹ thuật
 

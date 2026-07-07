@@ -1,9 +1,11 @@
 import http from 'node:http';
 
 import { handleError } from './middlewares/error.middleware.js';
-import { handleRoutes } from './routes/index.js';
+import { handleRoutes, registerRoutes } from './routes/index.js';
 
 const port = Number(process.env.PORT ?? 3000);
+
+registerRoutes();
 
 async function parseJsonBody(request: http.IncomingMessage) {
   const chunks: Buffer[] = [];

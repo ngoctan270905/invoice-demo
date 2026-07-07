@@ -1,4 +1,4 @@
-# Data Model: IAM INVOICE Demo
+# Data Model: INVOICE Demo
 
 ## Customer
 

@@ -1,9 +1,9 @@
 export const openApiDocument = {
   openapi: '3.0.0',
   info: {
-    title: 'IAM Invoice Demo API',
+    title: 'Invoice Demo API',
     version: '1.0.0',
-    description: 'API documentation for IAM Invoice Demo backend',
+    description: 'API documentation for Invoice Demo backend',
   },
   servers: [
     {

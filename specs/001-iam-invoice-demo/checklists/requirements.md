@@ -1,4 +1,4 @@
-# Checklist chất lượng đặc tả: IAM INVOICE Demo - Quản Lý Hóa Đơn Điện Tử
+# Checklist chất lượng đặc tả: INVOICE Demo - Quản Lý Hóa Đơn Điện Tử
 
 **Mục đích**: Validate độ đầy đủ và chất lượng đặc tả trước khi chuyển sang planning
 **Ngày tạo**: 2026-07-07

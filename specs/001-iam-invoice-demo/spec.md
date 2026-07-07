@@ -1,4 +1,4 @@
-# Đặc tả tính năng: IAM INVOICE Demo - Quản Lý Hóa Đơn Điện Tử
+# Đặc tả tính năng: INVOICE Demo - Quản Lý Hóa Đơn Điện Tử
 
 **Branch tính năng**: `[001-iam-invoice-demo]`
 
@@ -6,7 +6,7 @@
 
 **Trạng thái**: Nháp
 
-**Đầu vào**: Mô tả từ người dùng: "Xây dựng ứng dụng demo có tên IAM INVOICE Demo - Quản Lý Hóa Đơn Điện Tử, hỗ trợ quản lý khách hàng, tạo hóa đơn, tính VAT, tra cứu hóa đơn và quản lý trạng thái hóa đơn ở phạm vi mô phỏng."
+**Đầu vào**: Mô tả từ người dùng: "Xây dựng ứng dụng demo có tên INVOICE Demo - Quản Lý Hóa Đơn Điện Tử, hỗ trợ quản lý khách hàng, tạo hóa đơn, tính VAT, tra cứu hóa đơn và quản lý trạng thái hóa đơn ở phạm vi mô phỏng."
 
 ## Clarifications
 
