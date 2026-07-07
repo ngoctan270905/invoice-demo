@@ -1,113 +1,117 @@
-# Implementation Plan: [FEATURE]
+# Kế hoạch triển khai: [TÍNH NĂNG]
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
+**Branch**: `[###-ten-tinh-nang]` | **Ngày**: [NGÀY] | **Spec**: [liên kết]
 
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
+**Đầu vào**: Đặc tả tính năng từ `/specs/[###-ten-tinh-nang]/spec.md`
 
-**Note**: This template is filled in by the `/speckit-plan` command. See `.specify/templates/plan-template.md` for the execution workflow.
+**Ghi chú**: Template này được điền bởi lệnh `/speckit-plan`. Xem `.specify/templates/plan-template.md` để biết workflow thực thi.
 
-## Summary
+## Tóm tắt
 
-[Extract from feature spec: primary requirement + technical approach from research]
+[Trích từ đặc tả tính năng: yêu cầu chính + hướng tiếp cận kỹ thuật từ research]
 
-## Technical Context
+## Ngữ cảnh kỹ thuật
 
 <!--
-  ACTION REQUIRED: Replace the content in this section with the technical details
-  for the project. The structure here is presented in advisory capacity to guide
-  the iteration process.
+  CẦN THỰC HIỆN: Thay nội dung trong phần này bằng thông tin kỹ thuật
+  của dự án. Cấu trúc bên dưới chỉ mang tính gợi ý để hỗ trợ quá trình lặp.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]
+**Ngôn ngữ/Phiên bản**: [ví dụ: Node.js 22, TypeScript 6 hoặc CẦN LÀM RÕ]
 
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]
+**Dependency chính**: [ví dụ: Prisma, thư viện validate nhẹ hoặc CẦN LÀM RÕ]
 
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]
+**Lưu trữ**: [nếu có, ví dụ: MySQL, file hoặc N/A]
 
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]
+**Kiểm thử**: [ví dụ: Postman, Thunder Client, test script hoặc CẦN LÀM RÕ]
 
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
+**Nền tảng mục tiêu**: [ví dụ: Linux server, local Docker hoặc CẦN LÀM RÕ]
 
-**Project Type**: [e.g., library/cli/web-service/mobile-app/compiler/desktop-app or NEEDS CLARIFICATION]
+**Loại dự án**: [ví dụ: backend API, web-service, CLI hoặc CẦN LÀM RÕ]
 
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]
+**Mục tiêu hiệu năng**: [theo domain, ví dụ: đủ cho demo local hoặc CẦN LÀM RÕ]
 
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]
+**Ràng buộc**: [theo domain, ví dụ: code đơn giản, hạn chế thư viện, không tích hợp service thật hoặc CẦN LÀM RÕ]
 
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Quy mô/Phạm vi**: [theo domain, ví dụ: demo học tập, số lượng user nhỏ hoặc CẦN LÀM RÕ]
 
-## Constitution Check
+## Kiểm tra hiến pháp
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+*CỔNG KIỂM TRA: Phải đạt trước Giai đoạn 0 nghiên cứu. Kiểm tra lại sau Giai đoạn 1 thiết kế.*
 
-[Gates determined based on constitution file]
+- Ưu tiên học tập và đơn giản: implementation dễ hiểu cho người mới học Node.js + TypeScript và tránh thư viện/framework không có lý do.
+- Phân lớp backend rõ ràng: API backend tách route, controller, service và repository khi phù hợp.
+- Validate input: mọi dữ liệu người dùng gửi lên được validate trước khi vào service hoặc database.
+- Response JSON thống nhất: API trả JSON success/error thống nhất với message rõ ràng.
+- Phạm vi demo: ký số, gửi cơ quan thuế, thanh toán và email chỉ mô phỏng trừ khi hiến pháp được sửa đổi.
+- Dữ liệu rõ ràng: bảng database có tên rõ ràng, khóa chính và khóa ngoại cho quan hệ có ý nghĩa.
+- Test thủ công được: hành vi chính test được bằng Postman hoặc Thunder Client.
 
-## Project Structure
+## Cấu trúc dự án
 
-### Documentation (this feature)
+### Tài liệu cho tính năng này
 
 ```text
-specs/[###-feature]/
-├── plan.md              # This file (/speckit-plan command output)
-├── research.md          # Phase 0 output (/speckit-plan command)
-├── data-model.md        # Phase 1 output (/speckit-plan command)
-├── quickstart.md        # Phase 1 output (/speckit-plan command)
-├── contracts/           # Phase 1 output (/speckit-plan command)
-└── tasks.md             # Phase 2 output (/speckit-tasks command - NOT created by /speckit-plan)
+specs/[###-tinh-nang]/
+├── plan.md              # File này (output của /speckit-plan)
+├── research.md          # Output Giai đoạn 0 (/speckit-plan)
+├── data-model.md        # Output Giai đoạn 1 (/speckit-plan)
+├── quickstart.md        # Output Giai đoạn 1 (/speckit-plan)
+├── contracts/           # Output Giai đoạn 1 (/speckit-plan)
+└── tasks.md             # Output Giai đoạn 2 (/speckit-tasks - KHÔNG tạo bởi /speckit-plan)
 ```
 
-### Source Code (repository root)
+### Source code (repository root)
+
 <!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
+  CẦN THỰC HIỆN: Thay cây thư mục placeholder bên dưới bằng layout thật
+  cho tính năng này. Xóa các option không dùng và mở rộng cấu trúc đã chọn
+  bằng path thật. Plan cuối cùng không được giữ nhãn Option.
 -->
 
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
+# [XÓA NẾU KHÔNG DÙNG] Option 1: Project đơn
 src/
-├── models/
+├── config/
+├── controllers/
+├── middlewares/
+├── repositories/
+├── routes/
 ├── services/
-├── cli/
-└── lib/
+├── utils/
+└── index.ts
+
+prisma/
+└── schema.prisma
 
 tests/
-├── contract/
 ├── integration/
 └── unit/
 
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
+# [XÓA NẾU KHÔNG DÙNG] Option 2: Web app có frontend + backend
 backend/
 ├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
+│   ├── controllers/
+│   ├── repositories/
+│   ├── routes/
+│   └── services/
 └── tests/
 
 frontend/
 ├── src/
+│   ├── app/
 │   ├── components/
-│   ├── pages/
 │   └── services/
 └── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
 ```
 
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+**Quyết định cấu trúc**: [Ghi cấu trúc được chọn và tham chiếu các thư mục thật ở trên]
 
-## Complexity Tracking
+## Theo dõi độ phức tạp
 
-> **Fill ONLY if Constitution Check has violations that must be justified**
+> **Chỉ điền nếu có vi phạm Kiểm tra hiến pháp cần giải thích**
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+| Vi phạm | Vì sao cần | Phương án đơn giản hơn bị từ chối vì |
+|---------|------------|--------------------------------------|
+| [ví dụ: thêm framework mới] | [nhu cầu hiện tại] | [vì sao Node.js thuần không đủ] |
+| [ví dụ: repository pattern] | [vấn đề cụ thể] | [vì sao truy cập DB trực tiếp không phù hợp] |

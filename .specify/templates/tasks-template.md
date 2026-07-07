@@ -1,252 +1,258 @@
 ---
 
-description: "Task list template for feature implementation"
+description: "Template danh sách công việc cho triển khai tính năng"
 ---
 
-# Tasks: [FEATURE NAME]
+# Công việc: [TÊN TÍNH NĂNG]
 
-**Input**: Design documents from `/specs/[###-feature-name]/`
+**Đầu vào**: Tài liệu thiết kế từ `/specs/[###-ten-tinh-nang]/`
 
-**Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
+**Điều kiện trước**: plan.md (bắt buộc), spec.md (bắt buộc cho câu chuyện người dùng), research.md, data-model.md, contracts/
 
-**Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
+**Kiểm thử**: Các ví dụ bên dưới có công việc kiểm thử. Kiểm thử là TÙY CHỌN - chỉ thêm nếu đặc tả tính năng yêu cầu rõ.
 
-**Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
+**Tổ chức**: Công việc được nhóm theo câu chuyện người dùng để mỗi câu chuyện có thể triển khai và kiểm thử độc lập.
 
-## Format: `[ID] [P?] [Story] Description`
+## Định dạng: `[ID] [P?] [Story] Mô tả`
 
-- **[P]**: Can run in parallel (different files, no dependencies)
-- **[Story]**: Which user story this task belongs to (e.g., US1, US2, US3)
-- Include exact file paths in descriptions
+- **[P]**: Có thể chạy song song (khác file, không phụ thuộc nhau)
+- **[Story]**: Công việc thuộc câu chuyện người dùng nào (ví dụ: US1, US2, US3)
+- Mô tả phải có path file chính xác
 
-## Path Conventions
+## Quy ước path
 
-- **Single project**: `src/`, `tests/` at repository root
+- **Project đơn**: `src/`, `tests/` ở repository root
 - **Web app**: `backend/src/`, `frontend/src/`
-- **Mobile**: `api/src/`, `ios/src/` or `android/src/`
-- Paths shown below assume single project - adjust based on plan.md structure
+- Path bên dưới giả định project đơn - điều chỉnh theo cấu trúc trong plan.md
 
 <!--
   ============================================================================
-  IMPORTANT: The tasks below are SAMPLE TASKS for illustration purposes only.
+  QUAN TRỌNG: Các công việc bên dưới chỉ là CÔNG VIỆC MẪU để minh họa.
 
-  The /speckit-tasks command MUST replace these with actual tasks based on:
-  - User stories from spec.md (with their priorities P1, P2, P3...)
-  - Feature requirements from plan.md
-  - Entities from data-model.md
-  - Endpoints from contracts/
+  Lệnh /speckit-tasks PHẢI thay chúng bằng công việc thật dựa trên:
+  - Câu chuyện người dùng từ spec.md (với priority P1, P2, P3...)
+  - Yêu cầu tính năng từ plan.md
+  - Entity từ data-model.md
+  - Endpoint từ contracts/
 
-  Tasks MUST be organized by user story so each story can be:
-  - Implemented independently
-  - Tested independently
-  - Delivered as an MVP increment
+  Công việc PHẢI được tổ chức theo câu chuyện người dùng để mỗi câu chuyện có thể:
+  - Triển khai độc lập
+  - Kiểm thử độc lập
+  - Bàn giao như một phần tăng trưởng MVP
 
-  DO NOT keep these sample tasks in the generated tasks.md file.
+  KHÔNG giữ lại các công việc mẫu này trong file tasks.md được tạo.
   ============================================================================
 -->
 
-## Phase 1: Setup (Shared Infrastructure)
+## Giai đoạn 1: Thiết lập (Hạ tầng dùng chung)
 
-**Purpose**: Project initialization and basic structure
+**Mục đích**: Khởi tạo project và cấu trúc cơ bản
 
-- [ ] T001 Create project structure per implementation plan
-- [ ] T002 Initialize [language] project with [framework] dependencies
-- [ ] T003 [P] Configure linting and formatting tools
-
----
-
-## Phase 2: Foundational (Blocking Prerequisites)
-
-**Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
-
-**⚠️ CRITICAL**: No user story work can begin until this phase is complete
-
-Examples of foundational tasks (adjust based on your project):
-
-- [ ] T004 Setup database schema and migrations framework
-- [ ] T005 [P] Implement authentication/authorization framework
-- [ ] T006 [P] Setup API routing and middleware structure
-- [ ] T007 Create base models/entities that all stories depend on
-- [ ] T008 Configure error handling and logging infrastructure
-- [ ] T009 Setup environment configuration management
-
-**Checkpoint**: Foundation ready - user story implementation can now begin in parallel
+- [ ] T001 Tạo cấu trúc project theo kế hoạch triển khai
+- [ ] T002 Khởi tạo project [ngôn ngữ] với dependency [framework/thư viện]
+- [ ] T003 [P] Cấu hình linting và formatting tools
 
 ---
 
-## Phase 3: User Story 1 - [Title] (Priority: P1) 🎯 MVP
+## Giai đoạn 2: Nền tảng (Điều kiện chặn bắt buộc)
 
-**Goal**: [Brief description of what this story delivers]
+**Mục đích**: Hạ tầng lõi PHẢI hoàn thành trước khi triển khai BẤT KỲ câu chuyện người dùng nào
 
-**Independent Test**: [How to verify this story works on its own]
+**⚠️ QUAN TRỌNG**: Không bắt đầu công việc cho câu chuyện người dùng cho tới khi giai đoạn này hoàn tất
 
-### Tests for User Story 1 (OPTIONAL - only if tests requested) ⚠️
+Ví dụ công việc nền tảng (điều chỉnh theo project):
 
-> **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
+- [ ] T004 Thiết lập database schema và migration
+- [ ] T005 [P] Triển khai authentication/authorization nếu tính năng yêu cầu
+- [ ] T006 [P] Thiết lập cấu trúc API route/controller/service/repository
+- [ ] T007 Tạo model/entity nền tảng mà các câu chuyện phụ thuộc
+- [ ] T008 Cấu hình helper response JSON và error handling thống nhất
+- [ ] T009 Thiết lập quản lý cấu hình môi trường
+- [ ] T010 Thêm shared input validation utilities hoặc validation pattern
 
-- [ ] T010 [P] [US1] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T011 [P] [US1] Integration test for [user journey] in tests/integration/test_[name].py
-
-### Implementation for User Story 1
-
-- [ ] T012 [P] [US1] Create [Entity1] model in src/models/[entity1].py
-- [ ] T013 [P] [US1] Create [Entity2] model in src/models/[entity2].py
-- [ ] T014 [US1] Implement [Service] in src/services/[service].py (depends on T012, T013)
-- [ ] T015 [US1] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T016 [US1] Add validation and error handling
-- [ ] T017 [US1] Add logging for user story 1 operations
-
-**Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
+**Điểm kiểm tra**: Nền tảng sẵn sàng - có thể bắt đầu triển khai câu chuyện người dùng song song
 
 ---
 
-## Phase 4: User Story 2 - [Title] (Priority: P2)
+## Giai đoạn 3: Câu chuyện người dùng 1 - [Tiêu đề] (Ưu tiên: P1) 🎯 MVP
 
-**Goal**: [Brief description of what this story delivers]
+**Mục tiêu**: [Mô tả ngắn câu chuyện này đem lại gì]
 
-**Independent Test**: [How to verify this story works on its own]
+**Kiểm thử độc lập**: [Cách kiểm chứng câu chuyện này hoạt động độc lập]
 
-### Tests for User Story 2 (OPTIONAL - only if tests requested) ⚠️
+### Kiểm thử cho Câu chuyện người dùng 1 (TÙY CHỌN - chỉ khi spec yêu cầu) ⚠️
 
-- [ ] T018 [P] [US2] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T019 [P] [US2] Integration test for [user journey] in tests/integration/test_[name].py
+> **GHI CHÚ: Viết các kiểm thử này TRƯỚC, đảm bảo kiểm thử FAIL trước khi triển khai**
 
-### Implementation for User Story 2
+- [ ] T011 [P] [US1] Kiểm thử contract cho [endpoint] trong tests/contract/[ten].test.ts
+- [ ] T012 [P] [US1] Kiểm thử tích hợp cho [hành trình người dùng] trong tests/integration/[ten].test.ts
 
-- [ ] T020 [P] [US2] Create [Entity] model in src/models/[entity].py
-- [ ] T021 [US2] Implement [Service] in src/services/[service].py
-- [ ] T022 [US2] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T023 [US2] Integrate with User Story 1 components (if needed)
+### Triển khai cho Câu chuyện người dùng 1
 
-**Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
+- [ ] T013 [P] [US1] Tạo [Entity1] model trong prisma/schema.prisma hoặc src/models/[entity1].ts
+- [ ] T014 [P] [US1] Tạo [Entity2] model trong prisma/schema.prisma hoặc src/models/[entity2].ts
+- [ ] T015 [US1] Triển khai repository trong src/repositories/[repository].ts nếu cần database
+- [ ] T016 [US1] Triển khai service trong src/services/[service].ts (phụ thuộc T013-T015)
+- [ ] T017 [US1] Triển khai controller trong src/controllers/[controller].ts
+- [ ] T018 [US1] Map route trong src/routes/[route].ts
+- [ ] T019 [US1] Thêm validation và error handling thống nhất
 
----
-
-## Phase 5: User Story 3 - [Title] (Priority: P3)
-
-**Goal**: [Brief description of what this story delivers]
-
-**Independent Test**: [How to verify this story works on its own]
-
-### Tests for User Story 3 (OPTIONAL - only if tests requested) ⚠️
-
-- [ ] T024 [P] [US3] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T025 [P] [US3] Integration test for [user journey] in tests/integration/test_[name].py
-
-### Implementation for User Story 3
-
-- [ ] T026 [P] [US3] Create [Entity] model in src/models/[entity].py
-- [ ] T027 [US3] Implement [Service] in src/services/[service].py
-- [ ] T028 [US3] Implement [endpoint/feature] in src/[location]/[file].py
-
-**Checkpoint**: All user stories should now be independently functional
+**Điểm kiểm tra**: Câu chuyện người dùng 1 đã hoạt động đầy đủ và kiểm thử độc lập được
 
 ---
 
-[Add more user story phases as needed, following the same pattern]
+## Giai đoạn 4: Câu chuyện người dùng 2 - [Tiêu đề] (Ưu tiên: P2)
+
+**Mục tiêu**: [Mô tả ngắn câu chuyện này đem lại gì]
+
+**Kiểm thử độc lập**: [Cách kiểm chứng câu chuyện này hoạt động độc lập]
+
+### Kiểm thử cho Câu chuyện người dùng 2 (TÙY CHỌN - chỉ khi spec yêu cầu) ⚠️
+
+- [ ] T020 [P] [US2] Kiểm thử contract cho [endpoint] trong tests/contract/[ten].test.ts
+- [ ] T021 [P] [US2] Kiểm thử tích hợp cho [hành trình người dùng] trong tests/integration/[ten].test.ts
+
+### Triển khai cho Câu chuyện người dùng 2
+
+- [ ] T022 [P] [US2] Tạo [Entity] model trong prisma/schema.prisma hoặc src/models/[entity].ts
+- [ ] T023 [US2] Triển khai repository trong src/repositories/[repository].ts nếu cần database
+- [ ] T024 [US2] Triển khai service trong src/services/[service].ts
+- [ ] T025 [US2] Triển khai controller và route trong src/controllers/ và src/routes/
+- [ ] T026 [US2] Tích hợp với component của Câu chuyện người dùng 1 nếu cần
+
+**Điểm kiểm tra**: Câu chuyện người dùng 1 và 2 đều hoạt động độc lập
 
 ---
 
-## Phase N: Polish & Cross-Cutting Concerns
+## Giai đoạn 5: Câu chuyện người dùng 3 - [Tiêu đề] (Ưu tiên: P3)
 
-**Purpose**: Improvements that affect multiple user stories
+**Mục tiêu**: [Mô tả ngắn câu chuyện này đem lại gì]
 
-- [ ] TXXX [P] Documentation updates in docs/
-- [ ] TXXX Code cleanup and refactoring
-- [ ] TXXX Performance optimization across all stories
-- [ ] TXXX [P] Additional unit tests (if requested) in tests/unit/
-- [ ] TXXX Security hardening
-- [ ] TXXX Run quickstart.md validation
+**Kiểm thử độc lập**: [Cách kiểm chứng câu chuyện này hoạt động độc lập]
 
----
+### Kiểm thử cho Câu chuyện người dùng 3 (TÙY CHỌN - chỉ khi spec yêu cầu) ⚠️
 
-## Dependencies & Execution Order
+- [ ] T027 [P] [US3] Kiểm thử contract cho [endpoint] trong tests/contract/[ten].test.ts
+- [ ] T028 [P] [US3] Kiểm thử tích hợp cho [hành trình người dùng] trong tests/integration/[ten].test.ts
 
-### Phase Dependencies
+### Triển khai cho Câu chuyện người dùng 3
 
-- **Setup (Phase 1)**: No dependencies - can start immediately
-- **Foundational (Phase 2)**: Depends on Setup completion - BLOCKS all user stories
-- **User Stories (Phase 3+)**: All depend on Foundational phase completion
-  - User stories can then proceed in parallel (if staffed)
-  - Or sequentially in priority order (P1 → P2 → P3)
-- **Polish (Final Phase)**: Depends on all desired user stories being complete
+- [ ] T029 [P] [US3] Tạo [Entity] model trong prisma/schema.prisma hoặc src/models/[entity].ts
+- [ ] T030 [US3] Triển khai repository/service nếu cần
+- [ ] T031 [US3] Triển khai controller và route
+- [ ] T032 [US3] Thêm validation và response JSON thống nhất
 
-### User Story Dependencies
-
-- **User Story 1 (P1)**: Can start after Foundational (Phase 2) - No dependencies on other stories
-- **User Story 2 (P2)**: Can start after Foundational (Phase 2) - May integrate with US1 but should be independently testable
-- **User Story 3 (P3)**: Can start after Foundational (Phase 2) - May integrate with US1/US2 but should be independently testable
-
-### Within Each User Story
-
-- Tests (if included) MUST be written and FAIL before implementation
-- Models before services
-- Services before endpoints
-- Core implementation before integration
-- Story complete before moving to next priority
-
-### Parallel Opportunities
-
-- All Setup tasks marked [P] can run in parallel
-- All Foundational tasks marked [P] can run in parallel (within Phase 2)
-- Once Foundational phase completes, all user stories can start in parallel (if team capacity allows)
-- All tests for a user story marked [P] can run in parallel
-- Models within a story marked [P] can run in parallel
-- Different user stories can be worked on in parallel by different team members
+**Điểm kiểm tra**: Tất cả câu chuyện người dùng đã hoạt động độc lập
 
 ---
 
-## Parallel Example: User Story 1
+[Thêm giai đoạn câu chuyện người dùng nếu cần, theo cùng format]
+
+---
+
+## Giai đoạn N: Hoàn thiện & nội dung dùng chung
+
+**Mục đích**: Cải thiện ảnh hưởng nhiều câu chuyện người dùng
+
+- [ ] TXXX [P] Cập nhật tài liệu trong docs/ hoặc README.md
+- [ ] TXXX Dọn code và refactor
+- [ ] TXXX Tối ưu đơn giản nếu cần
+- [ ] TXXX [P] Thêm unit test nếu được yêu cầu trong tests/unit/
+- [ ] TXXX Kiểm tra bảo mật cơ bản cho input và lỗi API
+- [ ] TXXX Validate quickstart.md
+- [ ] TXXX Test luồng chính bằng Postman hoặc Thunder Client
+
+---
+
+## Phụ thuộc & thứ tự thực hiện
+
+### Phụ thuộc giữa giai đoạn
+
+- **Thiết lập (Giai đoạn 1)**: Không có phụ thuộc - có thể bắt đầu ngay
+- **Nền tảng (Giai đoạn 2)**: Phụ thuộc Thiết lập hoàn tất - CHẶN tất cả câu chuyện người dùng
+- **Câu chuyện người dùng (Giai đoạn 3+)**: Tất cả phụ thuộc Nền tảng hoàn tất
+  - Sau đó câu chuyện người dùng có thể chạy song song nếu đủ người
+  - Hoặc chạy tuần tự theo priority (P1 → P2 → P3)
+- **Hoàn thiện (Giai đoạn cuối)**: Phụ thuộc các câu chuyện người dùng mong muốn đã hoàn tất
+
+### Phụ thuộc giữa câu chuyện người dùng
+
+- **Câu chuyện người dùng 1 (P1)**: Có thể bắt đầu sau Nền tảng - không phụ thuộc câu chuyện khác
+- **Câu chuyện người dùng 2 (P2)**: Có thể bắt đầu sau Nền tảng - có thể tích hợp US1 nhưng vẫn phải kiểm thử độc lập
+- **Câu chuyện người dùng 3 (P3)**: Có thể bắt đầu sau Nền tảng - có thể tích hợp US1/US2 nhưng vẫn phải kiểm thử độc lập
+
+### Bên trong mỗi câu chuyện người dùng
+
+- Test (nếu có) PHẢI được viết và FAIL trước khi triển khai
+- Model trước repository
+- Repository trước service khi cần truy cập database
+- Service trước controller và route
+- Validation và JSON error thống nhất trước khi coi endpoint hoàn tất
+- Triển khai lõi trước tích hợp
+- Câu chuyện hoàn tất trước khi chuyển sang priority tiếp theo nếu làm tuần tự
+
+### Cơ hội chạy song song
+
+- Các công việc Thiết lập đánh dấu [P] có thể chạy song song
+- Các công việc Nền tảng đánh dấu [P] có thể chạy song song trong Giai đoạn 2
+- Khi Nền tảng hoàn tất, các câu chuyện người dùng có thể bắt đầu song song nếu đủ người
+- Các kiểm thử của cùng câu chuyện người dùng đánh dấu [P] có thể chạy song song
+- Các model trong cùng câu chuyện đánh dấu [P] có thể chạy song song
+- Các câu chuyện người dùng khác nhau có thể do nhiều người làm song song
+
+---
+
+## Ví dụ chạy song song: Câu chuyện người dùng 1
 
 ```bash
-# Launch all tests for User Story 1 together (if tests requested):
-Task: "Contract test for [endpoint] in tests/contract/test_[name].py"
-Task: "Integration test for [user journey] in tests/integration/test_[name].py"
+# Chạy tất cả kiểm thử của Câu chuyện người dùng 1 cùng lúc (nếu spec yêu cầu kiểm thử):
+Task: "Kiểm thử contract cho [endpoint] trong tests/contract/[ten].test.ts"
+Task: "Kiểm thử tích hợp cho [hành trình người dùng] trong tests/integration/[ten].test.ts"
 
-# Launch all models for User Story 1 together:
-Task: "Create [Entity1] model in src/models/[entity1].py"
-Task: "Create [Entity2] model in src/models/[entity2].py"
+# Tạo các model của Câu chuyện người dùng 1 cùng lúc:
+Task: "Tạo [Entity1] model trong prisma/schema.prisma hoặc src/models/[entity1].ts"
+Task: "Tạo [Entity2] model trong prisma/schema.prisma hoặc src/models/[entity2].ts"
 ```
 
 ---
 
-## Implementation Strategy
+## Chiến lược triển khai
 
-### MVP First (User Story 1 Only)
+### MVP trước (chỉ Câu chuyện người dùng 1)
 
-1. Complete Phase 1: Setup
-2. Complete Phase 2: Foundational (CRITICAL - blocks all stories)
-3. Complete Phase 3: User Story 1
-4. **STOP and VALIDATE**: Test User Story 1 independently
-5. Deploy/demo if ready
+1. Hoàn tất Giai đoạn 1: Thiết lập
+2. Hoàn tất Giai đoạn 2: Nền tảng (QUAN TRỌNG - chặn mọi câu chuyện)
+3. Hoàn tất Giai đoạn 3: Câu chuyện người dùng 1
+4. **DỪNG và VALIDATE**: Test Câu chuyện người dùng 1 độc lập
+5. Demo nếu đã sẵn sàng
 
-### Incremental Delivery
+### Bàn giao tăng dần
 
-1. Complete Setup + Foundational → Foundation ready
-2. Add User Story 1 → Test independently → Deploy/Demo (MVP!)
-3. Add User Story 2 → Test independently → Deploy/Demo
-4. Add User Story 3 → Test independently → Deploy/Demo
-5. Each story adds value without breaking previous stories
+1. Hoàn tất Thiết lập + Nền tảng → nền tảng sẵn sàng
+2. Thêm Câu chuyện người dùng 1 → kiểm thử độc lập → demo MVP
+3. Thêm Câu chuyện người dùng 2 → kiểm thử độc lập → demo
+4. Thêm Câu chuyện người dùng 3 → kiểm thử độc lập → demo
+5. Mỗi câu chuyện thêm giá trị mà không làm hỏng câu chuyện trước
 
-### Parallel Team Strategy
+### Chiến lược team song song
 
-With multiple developers:
+Với nhiều developer:
 
-1. Team completes Setup + Foundational together
-2. Once Foundational is done:
-   - Developer A: User Story 1
-   - Developer B: User Story 2
-   - Developer C: User Story 3
-3. Stories complete and integrate independently
+1. Cả team hoàn tất Thiết lập + Nền tảng
+2. Khi Nền tảng xong:
+   - Developer A: Câu chuyện người dùng 1
+   - Developer B: Câu chuyện người dùng 2
+   - Developer C: Câu chuyện người dùng 3
+3. Các câu chuyện hoàn tất và tích hợp độc lập
 
 ---
 
-## Notes
+## Ghi chú
 
-- [P] tasks = different files, no dependencies
-- [Story] label maps task to specific user story for traceability
-- Each user story should be independently completable and testable
-- Verify tests fail before implementing
-- Commit after each task or logical group
-- Stop at any checkpoint to validate story independently
-- Avoid: vague tasks, same file conflicts, cross-story dependencies that break independence
+- [P] công việc = khác file, không phụ thuộc nhau
+- Nhãn [Story] map công việc với câu chuyện người dùng để trace dễ hơn
+- Mỗi câu chuyện người dùng phải có thể hoàn thành và kiểm thử độc lập
+- Kiểm tra kiểm thử fail trước khi triển khai nếu có kiểm thử
+- Commit sau mỗi công việc hoặc nhóm công việc hợp lý
+- Dừng tại điểm kiểm tra để validate câu chuyện độc lập
+- Tránh: công việc mơ hồ, conflict cùng file, phụ thuộc chéo làm mất tính độc lập của câu chuyện
